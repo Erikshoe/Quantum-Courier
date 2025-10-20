@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quantum Courier — Молния 1.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.jpg" alt="Quantum Courier" class="logo"/>
+        <div class="brand-text">
+          <h1>Quantum Courier</h1>
+          <p class="tagline">Официальный сайт робот-доставщика</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#about">О модели</a>
+        <a href="#specs">Характеристики</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#buy">Купить</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h2>Молния 1.0</h2>
+        <p>Прыжок в будущее логистики: безопасность, статус и безупречность.</p>
+        <a href="#buy" class="btn btn-primary">Оформить заказ — 409,999 ₽</a>
+      </div>
+      <div class="hero-art">
+        <img src="assets/robot_with_sphere.png" alt="Молния 1.0"/>
+      </div>
+    </div>
+    <div class="hero-gradient"></div>
+  </section>
+
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <h3>О модели</h3>
+        <p id="description"></p>
+      </div>
+    </section>
+
+    <section id="specs" class="section specs">
+      <div class="container">
+        <h3>Характеристики</h3>
+        <div class="spec-grid">
+          <div class="spec-card">
+            <div class="spec-title">Габариты</div>
+            <div class="spec-value">диаметр 1000 мм</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">Вес</div>
+            <div class="spec-value">90 кг</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">Аккумулятор</div>
+            <div class="spec-value">до 24 часов работы</div>
+          </div>
+          <div class="spec-card price">
+            <div class="spec-title">Цена</div>
+            <div class="spec-value">409,999 ₽</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+      <div class="container">
+        <h3>Галерея</h3>
+        <div class="thumbs">
+          <button class="thumb" data-full="assets/robot_front.png" aria-label="Открыть робот спереди">
+            <img src="assets/robot_front.png" alt="Робот спереди"/>
+          </button>
+          <button class="thumb" data-full="assets/robot_with_sphere.png" aria-label="Открыть робот со сферой">
+            <img src="assets/robot_with_sphere.png" alt="Робот со сферой"/>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="buy" class="section purchase">
+      <div class="container">
+        <h3>Оформление заказа</h3>
+        <p>Выберите удобный способ получения: доставка на адрес или самовывоз из ПВЗ.</p>
+        <div class="buy-cards">
+          <div class="buy-card">
+            <h4>Доставка</h4>
+            <p>Укажите адрес и желаемое время. Наш менеджер свяжется для подтверждения.</p>
+            <button class="btn btn-secondary" data-open-chat data-mode="delivery">Заказать доставку</button>
+          </div>
+          <div class="buy-card">
+            <h4>Самовывоз</h4>
+            <p>Заберите робота в ближайшем ПВЗ. Подтвердите личность и номер заказа.</p>
+            <button class="btn btn-secondary" data-open-chat data-mode="pickup">Заказать самовывоз</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Просмотр изображения">
+    <button class="lightbox-close" aria-label="Закрыть">×</button>
+    <img class="lightbox-img" alt="Просмотр" />
+  </div>
+
+  <div class="chat-widget" aria-live="polite">
+    <button class="chat-toggle" aria-label="Открыть чат заказа">Чат заказа</button>
+    <div class="chat-window" aria-hidden="true">
+      <div class="chat-header">
+        <div class="chat-title">Quantum Courier — Заказ</div>
+        <button class="chat-close" aria-label="Закрыть">×</button>
+      </div>
+      <div class="chat-body">
+        <div class="chat-messages" id="chatMessages"></div>
+        <form class="chat-form" id="orderForm">
+          <div class="form-row">
+            <label>Способ получения</label>
+            <div class="segmented" role="radiogroup" aria-label="Способ получения">
+              <input type="radio" id="modeDelivery" name="mode" value="delivery" checked>
+              <label for="modeDelivery">Доставка</label>
+              <input type="radio" id="modePickup" name="mode" value="pickup">
+              <label for="modePickup">Самовывоз</label>
+            </div>
+          </div>
+          <div class="form-row" data-field="address">
+            <label for="address">Адрес</label>
+            <input type="text" id="address" name="address" placeholder="Город, улица, дом" autocomplete="street-address" />
+          </div>
+          <div class="form-row" data-field="pickupPoint" hidden>
+            <label for="pickupPoint">ПВЗ</label>
+            <input type="text" id="pickupPoint" name="pickupPoint" placeholder="Укажите удобный ПВЗ" />
+          </div>
+          <div class="form-row">
+            <label for="when">Когда</label>
+            <input type="datetime-local" id="when" name="when" />
+          </div>
+          <div class="form-row two">
+            <div>
+              <label for="name">Имя</label>
+              <input type="text" id="name" name="name" placeholder="Как к вам обращаться" autocomplete="name" />
+            </div>
+            <div>
+              <label for="phone">Телефон</label>
+              <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="form-row">
+            <button type="submit" class="btn btn-primary full">Подтвердить заказ — 409,999 ₽</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Quantum Courier. Все права защищены.</div>
+      <div>Официальный дилер робота «Молния 1.0»</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
