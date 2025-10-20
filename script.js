@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    addUserMessage(`Заказ: Молния 1.0 — 409,999 ₽; способ: ${mode === 'delivery' ? 'доставка' : 'самовывоз'}.`);
+    addUserMessage(`Заказ: Молния 1.0 — 409 999 ₽; способ: ${mode === 'delivery' ? 'доставка' : 'самовывоз'}.`);
     const summary = mode === 'delivery' ? `Адрес: ${address}` : `ПВЗ: ${pickupPoint}`;
     addUserMessage(`Контакты: ${name}, ${phone}. ${summary}. Время: ${when}`);
 
