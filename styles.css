@@ -104,11 +104,170 @@ input::placeholder { color: #6e8096; }
 
 .site-footer { padding: 20px 0 40px; color: var(--muted); text-align: center; border-top: 1px solid rgba(128,255,234,0.12); margin-top: 24px; }
 
+/* Mobile optimizations */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 24px; }
   .hero-text h2 { font-size: 40px; }
   .specs .spec-grid { grid-template-columns: repeat(2, 1fr); }
   .purchase .buy-cards { grid-template-columns: 1fr; }
   .gallery .thumbs { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .container { width: 95vw; }
+  
+  .header-inner { 
+    flex-direction: column; 
+    gap: 12px; 
+    padding: 12px 0; 
+  }
+  .nav { 
+    gap: 12px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+  }
+  .nav a { 
+    font-size: 14px; 
+    padding: 6px 12px; 
+    border-radius: 8px; 
+    background: rgba(128,255,234,0.1); 
+  }
+  
+  .hero-inner { 
+    padding: 20px 0; 
+    gap: 20px; 
+  }
+  .hero-text h2 { 
+    font-size: 32px; 
+    line-height: 1.2; 
+  }
+  .hero-text p { 
+    font-size: 16px; 
+    margin-bottom: 16px; 
+  }
+  .btn { 
+    padding: 14px 20px; 
+    font-size: 16px; 
+    min-height: 48px; 
+    touch-action: manipulation; 
+  }
+  
+  .section { padding: 32px 0; }
+  .section h3 { font-size: 24px; margin-bottom: 16px; }
+  
+  .specs .spec-grid { 
+    grid-template-columns: 1fr; 
+    gap: 12px; 
+  }
+  .spec-card { 
+    padding: 16px; 
+    text-align: center; 
+  }
+  .spec-value { font-size: 20px; }
+  
+  .gallery .thumbs { gap: 12px; }
+  .thumb img { height: 200px; }
+  
+  .purchase .buy-cards { gap: 12px; }
+  .buy-card { padding: 16px; }
+  .buy-card h4 { font-size: 16px; }
+  
+  .lightbox-img { 
+    max-width: 95vw; 
+    max-height: 80vh; 
+  }
+  .lightbox-close { 
+    top: 10px; 
+    right: 10px; 
+    padding: 6px 10px; 
+    font-size: 16px; 
+  }
+  
+  .chat-widget { 
+    right: 12px; 
+    bottom: 12px; 
+  }
+  .chat-window { 
+    width: calc(100vw - 24px); 
+    max-width: 400px; 
+    max-height: 80vh; 
+    bottom: 60px; 
+    right: 0; 
+  }
+  .chat-toggle { 
+    padding: 12px 16px; 
+    font-size: 14px; 
+    min-height: 44px; 
+    touch-action: manipulation; 
+  }
+  .chat-form { padding: 16px; }
+  .form-row.two { grid-template-columns: 1fr; }
+  input[type="text"], input[type="tel"], input[type="datetime-local"] { 
+    padding: 12px; 
+    font-size: 16px; 
+    min-height: 44px; 
+    touch-action: manipulation; 
+  }
+  .segmented label { 
+    padding: 10px 12px; 
+    font-size: 14px; 
+    min-height: 44px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+  }
+  
+  .site-footer { 
+    padding: 16px 0 24px; 
+    font-size: 12px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h2 { font-size: 28px; }
+  .hero-text p { font-size: 14px; }
+  .btn { 
+    padding: 12px 16px; 
+    font-size: 14px; 
+  }
+  
+  .brand-text h1 { font-size: 18px; }
+  .tagline { font-size: 11px; }
+  
+  .spec-card { padding: 12px; }
+  .spec-title { font-size: 11px; }
+  .spec-value { font-size: 18px; }
+  
+  .thumb img { height: 160px; }
+  
+  .chat-window { 
+    width: calc(100vw - 16px); 
+    max-width: 360px; 
+  }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover { transform: none; }
+  .thumb:hover img { transform: none; }
+  .nav a:hover { opacity: 1; }
+  
+  .btn:active { 
+    transform: scale(0.98); 
+    transition: transform 0.1s ease; 
+  }
+  .thumb:active img { 
+    transform: scale(0.98); 
+    transition: transform 0.1s ease; 
+  }
+}
+
+/* Prevent zoom on input focus (iOS) */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="text"], 
+  input[type="tel"], 
+  input[type="datetime-local"] { 
+    font-size: 16px; 
+  }
 }
 
